@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.css";
 
-export const Result = ({ res,isPlaying }) => {
+export const Result = ({res, inputRef}) => {
   if (!res[0]) {
     return <h3>Result will be shown here</h3>;
   } else {
@@ -17,7 +17,7 @@ export const Result = ({ res,isPlaying }) => {
           {/* <audio className="audio" controls >
             <source src={isPlaying} type="audio/mp3" />
           </audio> */}
-          <audio className="audio" controls >
+          <audio className="audio" ref={inputRef} controls >
             <source src={phonetics[0].audio} type="audio/mp3" />
           </audio>
         </div>

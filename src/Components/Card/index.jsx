@@ -8,21 +8,16 @@ import { getData } from "../../Utills/Getdata";
 import "./style.css";
 
 export default class Card extends React.Component {
-  constructor(props) {
-    super(props);
+    state = { word: "", res: {} };
+    audio = React.createRef();
 
-    this.state = { word: "", res: {} };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     getData(this.state.word).then((res) =>
       this.setState({ res }, function () {
-        this.refs.audio.pause();
-        this.refs.audio.load();
-        this.refs.audio.play();
+        if (this.state.res[0]) {
+          this.audio.pause();
+          this.audio.load();
+        }
       })
     );
     e.preventDefault();
@@ -31,14 +26,6 @@ export default class Card extends React.Component {
   handleChange = (e) => {
     this.setState({ word: e.target.value });
   };
-  // onTrackChange = (source) => {
-  //   this.setState({ isPlaying: source }, function () {
-  //     this.refs.audio.pause();
-  //     this.refs.audio.load();
-  //     this.refs.audio.play();
-  //   });
-  // };
-
   render() {
     return (
       <div className="card">
@@ -46,7 +33,7 @@ export default class Card extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <Result {...this.state} />
+        <Result {...this.state} inputRef={el => this.audio = el} />
       </div>
     );
   }
