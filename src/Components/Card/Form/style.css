@@ -1,0 +1,37 @@
+.form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+.input {
+  width: 40%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #fff;
+  border-radius: 10px;
+  font-size: 1em;
+  color: #fff;
+  outline: none;
+}
+.submit {
+  width: 15%;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1em;
+  color: #fff;
+  background-color: black;
+  cursor: pointer;
+}
+.submit:hover {
+  background-color: white;
+  color: #000;
+  transition: 0.3s;
+}
+
+::placeholder {
+  color: #ffff;
+  font-size: 1em;
+}
